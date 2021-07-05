@@ -66,3 +66,114 @@ HTML 코드 안에 PHP로 작성된 코드를 추가하면 웹 서버는 해당 
 #### PHP의 단점
 * 복잡한 사이트를 만드는 데는 효율적이지 못하다. 
 * 보안에 안전하지 않은 언어 구조를 가진다.
+<br><br><br><br>
+
+
+# 문법
+<br><br>
+## ASP 문법
+
+
+<br><br>
+## PHP 문법
+
+1.	PHP 코드 선언
+```PHP
+<?PHP
+PHP 코드
+?>
+```
+위와 같은 식으로 작성한다. <br>
+여기서 \<?PHP 는 PHP 엔진에게 이제부터 PHP가 시작된다는 사실을 알려주는 역할을 한다. <br>
+ ?>  는 PHP의 끝을 알려주는 역할을 한다. 
+
+* 파일에 PHP 코드만 포함된 경우 파일 끝에 있는 PHP 닫기 태그(?>)를 생략해도 된다. 
+
+
+<br><br>
+2. 출력<br>
+echo 명령어를 사용하면 브라우저 화면에 원하는 내용을 출력할 수 있다.
+```PHP
+<?PHP
+Echo “Hello World”; 
+?>
+```
+Hello World가 화면에 출력된다. 
+<br><br>
+
+3. 주석<br>
+주석 처리해야 하는 행이 한 행인 경우
+```PHP
+//를 이용해 주석처리
+또는
+#를 이용해 주석처리
+```
+<br>
+주석 처리해야 하는 행이 여러 행인 경우<br>
+
+```PHP
+/*를 이용해
+여러 행을
+주석 처리
+할 수 있다. */
+```
+<br><br>
+
+4. BOOl : 참, 거짓 형식<br>
+TRUE, FALSE로 지정 가능하며 대소문자를 구분하지 않는다. 
+```PHP
+$a_true = true;
+$a_false = 0;
+```
+<br>
+False : false, 0, 0.0, -0.0, "0", 빈 문자열, NULL 등
+True : true, 0이 아닌 모든 수
+<br><br>
+5. INT : 2진법, 8진법, 10진법, 16진법으로 지정 가능
+```PHP
+$a2 = 0b11111111; // 2진법으로 숫자 앞에 0b 삽입
+$a8 = 0123; // 8진법으로 숫자 앞에 0 삽입
+$a10 = 1234; // 10진법
+$a16 = 0x1A; // 16진법으로 숫자 앞에 0x 삽입
+$a_ = 1_234_567; // PHP 7.4.0 이상부터 숫자 사이에 _ 삽입 가능
+```
+<br><br>
+
+6. Float : floating-point number
+```PHP
+$a = 1_2.345;
+$b = 7E-10;
+```
+<br><br>
+7. String : 작은 따옴표('), 큰 따옴표("), Heredoc, Nowdoc 사용하여 표현 가능
+```PHP
+echo 'Hello \n World'; // '
+echo "Hello \n World"; // "
+
+echo <<<EOT
+Hello World
+EOT; // Heredoc
+
+echo <<<'EOT'
+Hello World
+EOT; // Nowdoc
+```
+<br><br>
+8. Numeric strings : 문자열이 int 또는 float로 해석 될 수 있는 경우 숫자로 간주된다. 
+```PHP
+$foo = 1 + "10.5"; // $foo는 float(11.5)
+```
+<br><br>
+9. Arrays : 실제로 정렬된 map. map이란 값을 키에 연결하는 유형
+array()와 같이 선언할 수 있으며, array 짧은 배열 구문은 ()을 []로도 대체 가능하다. 
+```PHP
+$array = array(
+    "foo" => "bar",
+    "bar" => "foo",
+);
+
+$array = [
+    "foo" => "bar"
+    "bar" => "foo"
+]
+```
