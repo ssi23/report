@@ -72,9 +72,133 @@ HTML 코드 안에 PHP로 작성된 코드를 추가하면 웹 서버는 해당 
 # 문법
 <br><br>
 ## ASP 문법
+1. ASP 코드 선언
+```ASP
+<% 
+ASP 코드
+%>
+```
+여기서 \<%는 ASP가 시작된다는 사실을 알려주는 역할을 한다.</br>
+%>는 ASP의 끝을 알려주는 역할을 한다. 
+<br><br>
 
+2. 출력
+Response.write() 함수를 사용하면 원하는 문자열을 화면에 출력할 수 있다. 
+```ASP
+response.write("Hello World")
+say = Hello
+response.write(say & " World") ' 변수와 문자를 연결할 때는 &(연결 연산자)를 사용하면 된다. 
+```
 
 <br><br>
+
+3. 주석
+주석 처리를 해야할 경우 '(작은 따옴표) 를 문장의 앞에 붙여준다. '는 한 줄 주석이며, 여러줄 주석은 지원하지 않는다. 
+```ASP
+' 주석 처리하려면 앞에 '(작은 따옴표)를 붙이면 된다. 
+```
+<br><br>
+
+4. 변수
+Dim [변수명]을 이용해서 변수를 선언할 수 있으며, 따로 변수를 선언하지 않아도 값을 대입하면 변수로 사용 가능하다. 
+```ASP
+Dim say
+say = "Hello"
+world = "World"
+```
+<br><br>
+5. 배열
+5.1 고정 배열 
+Dim 배열명(숫자)을 이용하여 고정 배열을 선언할 수 있다. 
+```ASP
+Dim a(1)
+
+a(0) = 0
+a(1) = 1
+```
+<br>
+5.2 동적 배열
+ReDim 배열명(숫자)를 이용하여 새롭게 배열의 크기를 지정해준다.
+```ASP
+Dim a()
+ReDim a(1) ' 배열의 크기를 다시 지정
+a(1) = 2
+
+ReDim Preserve a(2) ' Preserve를 붙이면 a 배열에 있던 데이터를 지켜준다.(기존값 유지)
+a(2) = 4
+```
+<br><br>
+
+6. If문 : 조건문으로 조건 값이 true면 해당하는 코드를 실행한다.
+If ... Then ... End if 의 구조를 가지고 있다. 
+```ASP
+Dim i
+i = 1
+
+if i <= 10 then
+    response.write("10이하 입니다.")
+else
+    response.write("10보다 큽니다.")
+end if
+```
+ASP에서의 if 문의 조건에서 같은지 비교하는 조건 연산자는 **=** 를 사용하고,<br>
+다른지 비교하는 조건 연산자는 **<>** 를 사용한다. 
+elseif는 붙여서 사용한다.
+
+<br><br>
+7. Do while문 : 반복문으로 조건이 참(true)인 동안 반복한다.
+```ASP
+Dim i
+i = 1
+
+Do While i <= 5
+    Response.Write i & "<br>"
+    i = i + 1
+Loop
+
+i = 0
+Do While i <= 5
+    i = i + 1
+    if i = 3 then
+        Exit Do  ' Exit Do를 이용해 While 문(반복문)을 종료할 수 있다. 
+    End if
+Loop
+
+```
+
+<br><br>
+8. for문 : 반복문으로 조건이 참일 동안 반복한다.
+For 변수 = 시작 값 To 종료 값 Step 증가 값
+    실행구문
+Next
+와 같이 이루어진다. 
+```ASP
+for i = 1 to 5 step 1  ' 1부터 5까지 1씩 증가하면서 반복한다. 
+    response.write i & "번째 <br>"
+next
+```
+<br><br>
+
+9. Select Case 문 : 분기점이 많을 때 사용된다. 일치하는 값을 찾아 해당 분기문을 수행한다.
+```ASP
+Dim rank
+rank = "2"
+
+Select Case rank
+    case "1"
+        response.write "1등입니다."
+    case "2"
+        response.write "2등입니다."
+    case "3"
+        response.write "3등입니다."
+    case else
+        response.write "안타깝지만, 순위에 들지 못했습니다."
+end select
+```     
+
+###### ASP는 코드 뒤에 ;(세미콜론)을 붙이지 않는다. 
+
+<br><br><br><br>
 ## PHP 문법
 
 1.	PHP 코드 선언
