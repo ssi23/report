@@ -187,10 +187,10 @@ function foo(iterable $iterable) {
     foreach ($iterable as $value) {
         // ...
     } 
-}```
+}
 
 // iterable로 선언된 매개 변수는 null 또는 배열을 기본 값으로 사용할 수 있다. 
-```PHP
+
 function foo(iterable $iterable = []) {
     // ...
 }
