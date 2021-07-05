@@ -264,6 +264,7 @@ echo CONSTANT; // 출력 값 : "Hello world."
 
 
 13. 연산자 
+- 연산자의 우선순위
 
 |연관성|연산자|추가 정보|
 |-------|-------|----------|
@@ -292,5 +293,146 @@ echo CONSTANT; // 출력 값 : "Hello world."
 |왼쪽|and|논리적|
 |왼쪽|xor|논리적|
 |왼쪽|or|논리적|
+
 <br>
+
+13.1 산술 연산자 : 기본적인 산수 계산
+```PHP
+echo $ a + $ b;
+echo $ a % $ b; // $a의 부호를 갖는다. 
+```
+<br>
+
+13.2 할당 연산자 : 왼쪽 피연산자의 값을 오른쪽 표현식의 값에 넣어준다. 
+```PHP
+$a = ($b = 4) + 5; // $a : 9, $b : 4
+```
+<br>
+
+13.3 비트 연산자 : 정수 내 특정 비트를 조작할 수 있다. 
+```PHP
+$a << $b // $a의 비트를 $b만큼 왼쪽으로 이동
+$a & $b // $a와 $b 둘 다에 설정된 bit 설정
+```
+<br>
+
+13.4 비교 연산자 : 두 값을 비교할 수 있다.
+```PHP
+$a == $b // 결과 값이 true이면, $a와 $b의 값은 동일하다.
+$a === $b // 결과 값이 true이면, $a와 $b의 값과 타입이 동일하다. 
+```
+<br>
+
+13.5 증가/감소 연산자 : 변수 값의 사전 및 사후 증감이 가능하다.
+```PHP
+++ $a // 사전 증분 - $a를 1만큼 증가시킨 다음 $a 반환
+$a -- // 사후 감소 - $a를 1만큼 감소시킨 다음 $a 반환 
+```
+<br>
+
+13.6 논리 연산자
+```PHP
+$a OR $b // $a와 $b 중에 하나라도 true면 true
+$a XOR $b // $a와 $b 중에 하나만 true면 true. 둘 다 true면 false
+```
+
+<br>
+
+14. if 문 : 조건이 true면  if 문을 실행한다.
+```PHP
+// if 문
+if ($a > $b){
+  echo "a is bigger than b"; // if 문 내의 코드가 한 행이면 {} 생략 가능하다.
+}
+
+// else 문
+if ($a > $b){
+  echo "a is greater than b";
+}else{
+  echo "a is NOT greater than b";
+}
+
+// else if 문
+if ($a > $b){
+  echo "a is bigger than b";
+}elseif($a == $b) {
+    echo "a is equal to b";
+} else {
+    echo "a is smaller than b";
+}
+```
+<br>
+
+15. while문 : 반복문 중 하나. 조건식이 true일 동안 반복한다.
+```PHP
+$i = 1;
+while ($i <= 10) { // i가 10보다 커지면 while문을 중단한다. 
+    echo $i++; 
+}
+
+$i = 1;
+while ($i <= 10):
+    echo $i;
+    $i++;
+endwhile;
+
+// do-while 문은 while문의 끝에서 조건이 참인지 확인한다. 
+// 그렇기 때문에 조건의 참, 거짓 여부와 상관없이 첫 번째 반복이 실행된다. 
+$i = 0;
+do {
+    echo $i;
+} while ($i > 0);
+
+```
+<br>
+
+16. for문 : 반복문 중 하나로 아래와 같이 쓰인다. 
+```PHP
+for ($i = 1; $i <= 10; $i++) { // for(변수의 초기화-for문 시작할 때 한 번만 실행, 조건으로 true일 동안 실행 반복문-for문 한 번 돌때마다 조건 만족하는지 확인, 변수 세팅-for문 한 번 끝날때마다 해당하는 행동 수행)
+    echo $i;
+}
+```
+<br>
+
+17. foreach : 배열을 쉽게 반복할 수 있게 해준다. 배열과 객체에서만 작동한다. 
+```PHP
+$arr = array(1, 2, 3, 4);
+foreach ($arr as &$value) { // foreach (iterable_expression as $value)
+    $value = $value * 2;
+}
+
+$a = array(
+    "one" => 1,
+    "two" => 2,
+    "three" => 3,
+    "seventeen" => 17
+);
+
+foreach ($a as $k => $v) { // foreach (iterable_expression as $key => $value)
+    echo "\$a[$k] => $v.\n";
+}
+
+```
+<br>
+
+18. switch 문 : if문과 유사하다. 여러 값 중에 동일한 값을 찾아 해당하는 코드를 실행한다. 
+```PHP
+switch ($i) {
+    case 0: // $i의 값이 0이면 실행
+        echo "i equals 0";
+        break;
+    case 1: // $i의 값이 1이면 실행
+        echo "i equals 1";
+        break;
+    case 2: // $i의 값이 2이면 실행
+        echo "i equals 2";
+        break;
+}
+```
+
+<br>
+
+19. break와 continue : break는 for, foreach, while, do-while, switch 구조에서 현재 실행을 종료한다. 조건문이나 반복문이 중첩되어 사용되어 있으면 숫자를 통해 어떤 구조를 종료할지 지정한다. continue는 루프안에서 현재 실행 중이던 동작을 멈추고 루프의 조건으로 되돌아 가 조건 평가부터 다시 시작하여 실행을 이어나간다. break와 마찬가지로 중첩된 경우 숫자를 통해 어떤 루프를 의미하는지 알려준다. 
+
+
 ###### PHP 코드의 각 행 끝에는 ;(세미콜론)이 필수로 들어가야 한다.
