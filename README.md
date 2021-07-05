@@ -177,3 +177,93 @@ $array = [
     "bar" => "foo"
 ]
 ```
+<br><br>
+
+10. Iterables : 함수에 필요한 값 집합을 나타내기 위한 매개 변수 유형으로 사용 가능하다.<br>
+foreach와 함께 사용되기 때문에 값 집합의 형식은 신경쓰지 않는다. 
+```PHP
+function foo(iterable $iterable) {
+    foreach ($iterable as $value) {
+        // ...
+    } 
+}```
+
+// iterable로 선언된 매개 변수는 null 또는 배열을 기본 값으로 사용할 수 있다. 
+```PHP
+function foo(iterable $iterable = []) {
+    // ...
+}
+
+// 함수가 반복 가능한 값을 반환 할 것임을 나타내는 반환 유형으로 사용할 수 있다.     ?
+function bar(): iterable {
+    return [1, 2, 3];
+}
+
+// iterable을 반환 유형으로 선언하는 함수는 생성자일 수도 있다.         ?
+function gen(): iterable {
+    yield 1;
+    yield 2;
+    yield 3;
+}
+
+```
+<br><br>
+11. Objects : 새 객체를 만들려면 new 문을 사용하여 클래스를 인스턴스화 하면 된다.
+```PHP
+class foo
+{
+    function do_foo()
+    {
+        echo "Doing foo."; 
+    }
+}
+
+$bar = new foo;
+$bar->do_foo();
+```
+
+<br><br>
+12. 변수 : **$변수이름** 과 같이 표시된다. 변수 이름은 대소문자를 구분한다. <br>
+유효한 변수 이름은 문자 또는 _ 로 시작하고 그 뒤에 임의 수의 문자, 숫자 또는 _ 이 이어진다. 
+```PHP
+$var = 'Hello';
+$Var = 'World';
+echo "$var, $Var";      // 출력은 "Hello, World"
+
+$4site = 'not yet';     // 유효하지 못한 변수. 변수 이름의 제일 앞에 숫자가 오면 안된다. 
+$_4site = 'not yet';    // 유효한 변수. 변수 이름의 제일 앞에 _가 와도 된다. 
+```
+<br>
+변수에 값을 대입할 때 다른 변수의 값을 참조하여 할당하려면 변수의 앞에 &를 추가하면 된다. 
+```PHP
+$var = 'Hello';
+$VAR = &$var; // 이런 식으로 참조할 수 있다.
+```
+참조하면 한 변수의 값을 변경하면 다른 변수도 같이 변경된다. <br><br>
+
+13. 상수 : const 키워드 또는 define() 함수를 사용하여 정의할 수 있다. 
+```PHP
+define("CONSTANT", "Hello world.");
+echo CONSTANT; // 출력 값 : "Hello world."
+```
+const 키워드를 사용할 때는 스칼라(bool, int, float, string) 표현식과 스칼라 표현식만 포함하는 상수 배열만 가능하다. 
+또한, if 문이나 try/catch 문 안에서는 선언 불가하다. 
+```PHP
+const CONSTANT = 'Hello World';
+echo CONSTANT; // 출력 값 : "Hello world."
+```
+<br>
+###### 상수와 변수의 차이점
+* 상수 앞에는 $ 기호가 없다. 
+* 상수는 가변 범위 지정 규칙에 관계 없이 어디서나 정의 및 액세스할 수 있다.
+* 상수를 설정한 후에는 다시 정의할 수 없다.
+* 상수는 스칼라 값이나 배열로만 평가할 수 있다.
+
+
+
+
+
+
+
+
+###### PHP 코드의 각 행 끝에는 ;(세미콜론)이 필수로 들어가야 한다.
